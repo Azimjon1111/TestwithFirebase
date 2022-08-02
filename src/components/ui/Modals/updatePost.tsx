@@ -2,7 +2,18 @@ import react, {useEffect, useState} from 'react'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import {Box, TextField, Button} from '@mui/material';
 import axios from 'axios'
-const UpdateModalPost = (props) => {
+interface UpdatePostModalProps {
+  show: boolean;
+  onCancel: () => void;
+  onePostData: {
+    id: number;
+    userId: number;
+    title: string;
+    body: string;
+  }
+  
+}
+const UpdateModalPost = (props: UpdatePostModalProps) => {
     console.log(props)
   const [title, setTitle] = useState(props.onePostData.title)
   const [body, setBody] = useState(props.onePostData.body)
@@ -10,7 +21,7 @@ const UpdateModalPost = (props) => {
     setTitle(props.onePostData.title)
     setBody(props.onePostData.body)
   },[props.onePostData])
-  const Submit =(e)=>{
+  const Submit =()=>{
     let data = {
       id: 1,
       userId: props.onePostData.userId,

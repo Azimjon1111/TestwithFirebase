@@ -1,12 +1,11 @@
 import React, { useCallback } from "react";
-import { withRouter } from "react-router";
 import {auth, logInWithEmailAndPassword} from "../../utils/firebase";
 import router from 'next/router'
 import Link from "next/link";
 // import firebase from 'firebase/compat/app'
 // import "firebase/compat/auth";
 const SignIn = () => {
-  const handleSignIn = async()=>{
+  const handleSignIn = async(event: any)=>{
     event.preventDefault();
     const { email, password } = event.target.elements;
     console.log(email.value, password.value);

@@ -2,10 +2,14 @@ import react, {useState} from 'react'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import {Box, TextField, Button} from '@mui/material';
 import axios from 'axios'
-const CreatePostModal = (props) => {
+interface CreatePostModalProps {
+  show: boolean;
+  onCancel: () => void;
+}
+const CreatePostModal = (props: CreatePostModalProps) => {
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
-  const Submit =(e)=>{
+  const Submit =()=>{
     let data = {
       id: 1,
       title, body

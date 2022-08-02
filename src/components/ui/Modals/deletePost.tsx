@@ -1,6 +1,11 @@
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from 'axios'
-const DeletePostModal = (props)=>{
+interface DeletePostModalProps{
+    show: boolean;
+    onCancel: () => void;
+    id: number;
+  }
+const DeletePostModal = (props: DeletePostModalProps)=>{
     const deletePost = ()=>{
         axios.delete(`https://jsonplaceholder.typicode.com/posts/${props.id}`)
         .then((res)=>{
