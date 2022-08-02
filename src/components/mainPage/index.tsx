@@ -4,6 +4,12 @@ import CreatePostModal from '../ui/Modals/createPost'
 import DeletePostModal from '../ui/Modals/deletePost'
 import UpdatePostModal from '../ui/Modals/updatePost'
 const MainPage = () => {
+  interface ItemProps {
+    id: number;
+    userId: number;
+    title: string;
+    body: string;
+  }
     const [data, setData]= useState([])
     const [onePostData, setOnePostData] = useState({id: '', title: '', body: ''})
     const [modalShow, setModalShow] = useState(false)
@@ -45,7 +51,7 @@ const MainPage = () => {
     <th>Body</th>
     <th>Actions</th>
   </tr>
-  {data.map((item, index)=>(
+  {data.map((item: ItemProps, index)=>(
       <tr key={item.id}>
     <td>{item.id}</td>
     <td>{item.userId}</td>
