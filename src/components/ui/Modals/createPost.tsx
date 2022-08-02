@@ -8,38 +8,38 @@ interface CreatePostModalProps {
   onCancel: () => void;
   children?: React.ReactNode;
 }
-export interface SweetAlertOptionalPropsWithDefaults {
-  allowEscape?: boolean;
-  closeOnClickOutside?: boolean;
-  inputType?: string;
-  customClass?: string;
-  validationMsg?: string;
-  validationRegex?: RegExp;
-  hideOverlay?: boolean;
-  show?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  focusConfirmBtn?: boolean;
-  focusCancelBtn?: boolean;
-  confirmBtnBsStyle?: string;
-  cancelBtnBsStyle?: string;
-  showCloseButton?: boolean;
-  beforeMount?: () => any;
-  afterMount?: () => any;
-  beforeUpdate?: (
-    prevProps: SweetAlertProps,
-    prevState: SweetAlertState
-  ) => any;
-  afterUpdate?: (props: SweetAlertProps, state: SweetAlertState) => any;
-  beforeUnmount?: () => any;
-  style?: CSSProperties;
-  closeBtnStyle?: CSSProperties;
-  timeout?: number;
-  openAnim?: boolean | SweetAlertAnimationProps;
-  closeAnim?: boolean | SweetAlertAnimationProps;
-  reverseButtons?: boolean;
-  dependencies?: any[];
-}
+// export interface SweetAlertOptionalPropsWithDefaults {
+//   allowEscape?: boolean;
+//   closeOnClickOutside?: boolean;
+//   inputType?: string;
+//   customClass?: string;
+//   validationMsg?: string;
+//   validationRegex?: RegExp;
+//   hideOverlay?: boolean;
+//   show?: boolean;
+//   required?: boolean;
+//   disabled?: boolean;
+//   focusConfirmBtn?: boolean;
+//   focusCancelBtn?: boolean;
+//   confirmBtnBsStyle?: string;
+//   cancelBtnBsStyle?: string;
+//   showCloseButton?: boolean;
+//   beforeMount?: () => any;
+//   afterMount?: () => any;
+//   beforeUpdate?: (
+//     prevProps: SweetAlertProps,
+//     prevState: SweetAlertState
+//   ) => any;
+//   afterUpdate?: (props: SweetAlertProps, state: SweetAlertState) => any;
+//   beforeUnmount?: () => any;
+//   style?: CSSProperties;
+//   closeBtnStyle?: CSSProperties;
+//   timeout?: number;
+//   openAnim?: boolean | SweetAlertAnimationProps;
+//   closeAnim?: boolean | SweetAlertAnimationProps;
+//   reverseButtons?: boolean;
+//   dependencies?: any[];
+// }
 const CreatePostModal: React.FC<CreatePostModalProps> = (props) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
