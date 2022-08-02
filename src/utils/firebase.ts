@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider,getAuth, getIdToken,  signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail,signOut} from "firebase/auth";
 import {  getFirestore, query, getDocs, collection, where, addDoc} from "firebase/firestore";
-
+import router from 'next/router'
 const firebaseConfig = {
   apiKey: "AIzaSyAgbBPa6LeinuXhhrYrA4S1ea9eisQi-ig",
   authDomain: "practise-6e2c1.firebaseapp.com",
@@ -49,14 +49,11 @@ const logout = () => {
 };
 const IsVerified = async() => {
   const idToken = window.localStorage.getItem("idToken");
-  const auth1 = await getAuth(app);
+  let accessToken = await getAuth(app).currentUser?.accessToken;
   let res = false
-  console.log(idToken)
-  console.log(auth1?.currentUser?.accessToken)
-  if(idToken == auth1?.currentUser?.accessToken){
+  if(idToken?.length > 10 || accessToken !=null){
     res = true
   }
-  console.log(res)
   return res
 }
 

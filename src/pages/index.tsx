@@ -4,21 +4,31 @@ import Head from 'next/head'
 import Image from 'next/image'
 import {IsVerified} from '../utils/firebase'
 import Link from 'next/link'
+import router from 'next/router'
+import MainPage from '../components/mainPage'
 const Home: NextPage = () => {
-  const [isVerified, setIsVerified] = useState(false)
+  const [isVerified, setIsVerified] = useState(null)
   useEffect(()=>{
     IsVerified().then((res)=>{
       console.log(res)
-      setIsVerified(res)
+      if(res){
+        setIsVerified(true)
+      }else{
+        console.log('elese')
+        router.push('/signin')
+        // setIsVerified(false)
+      }
     })
   },[IsVerified])
   return (
     <>
-    {isVerified ? <div>Verified</div> : <div>Not Verified</div>}
-    <p>
+    <div style={{textAlign: "center"}}>
+    {isVerified ? <MainPage/> : isVerified == null ? <>Loading...</> : <>Not Verified</>}
+    </div>
+    {/* <p>
     <Link href="/signin">Sign In</Link>
     </p>
-    <Link href="/signup">Sign Up</Link>
+    <Link href="/signup">Sign Up</Link> */}
     </>
   )
 }
