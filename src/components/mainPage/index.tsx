@@ -5,7 +5,7 @@ import DeletePostModal from '../ui/Modals/deletePost'
 import UpdatePostModal from '../ui/Modals/updatePost'
 const MainPage = () => {
     const [data, setData]= useState([])
-    const [onePostData, setOnePostData] = useState({})
+    const [onePostData, setOnePostData] = useState({id: '', title: '', body: ''})
     const [modalShow, setModalShow] = useState(false)
     const [updateModalShow, setUpdateModalShow] = useState(false)
     const [deleteModalShow, setDeleteModalShow] = useState(false)
