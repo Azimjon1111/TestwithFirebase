@@ -11,7 +11,7 @@ const MainPage = () => {
     body: string;
   }
     const [data, setData]= useState([])
-    const [onePostData, setOnePostData] = useState({id: '', title: '', body: ''})
+    const [onePostData, setOnePostData] = useState<ItemProps>({id: 0, userId: 0, title: '', body: ''})
     const [modalShow, setModalShow] = useState(false)
     const [updateModalShow, setUpdateModalShow] = useState(false)
     const [deleteModalShow, setDeleteModalShow] = useState(false)
