@@ -1,36 +1,39 @@
-import react, {useEffect, useState} from 'react'
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import {IsVerified} from '../utils/firebase'
-import Link from 'next/link'
-import router from 'next/router'
-import MainPage from '../components/mainPage'
+import react, { useEffect, useState } from "react";
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import { IsVerified } from "../utils/firebase";
+import Link from "next/link";
+import router from "next/router";
+import MainPage from "../components/mainPage";
 const Home: NextPage = () => {
-  const [isVerified, setIsVerified] = useState(null)
-  useEffect(()=>{
-    IsVerified().then((res)=>{
-      console.log(res)
-      if(res){
-        setIsVerified(true)
-      }else{
-        console.log('elese')
-        router.push('/signin')
-        // setIsVerified(false)
+  const [isVerified, setIsVerified] = useState(null);
+  useEffect(() => {
+    IsVerified().then((res) => {
+      if (res) {
+        setIsVerified(true);
+      } else {
+        router.push("/signin");
       }
-    })
-  },[IsVerified])
+    });
+  }, [IsVerified]);
   return (
     <>
-    <div style={{textAlign: "center"}}>
-    {isVerified ? <MainPage/> : isVerified == null ? <>Loading...</> : <>Not Verified</>}
-    </div>
-    {/* <p>
+      <div style={{ textAlign: "center" }}>
+        {isVerified ? (
+          <MainPage />
+        ) : isVerified == null ? (
+          <>Loading...</>
+        ) : (
+          <>Not Verified</>
+        )}
+      </div>
+      {/* <p>
     <Link href="/signin">Sign In</Link>
     </p>
     <Link href="/signup">Sign Up</Link> */}
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

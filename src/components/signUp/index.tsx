@@ -1,30 +1,20 @@
 import React, { useCallback } from "react";
-import {auth, registerWithEmailAndPassword} from "../../utils/firebase";
-import router from 'next/router'
+import { auth, registerWithEmailAndPassword } from "../../utils/firebase";
+import router from "next/router";
 import Link from "next/link";
-// import firebase from 'firebase/compat/app'
-// import "firebase/compat/auth";
 const SignUp = () => {
-  const handleSignUp = async(event: any)=>{
+  const handleSignUp = async (event: any) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
-    console.log(email.value, password.value);
-    registerWithEmailAndPassword(email.value, password.value).then((res)=>{
-        console.log(res)
-        router.push('/')
-    }).catch((err)=>{
-        console.log(err)
-        router.reload()
-    })
-    // try {
-    //   await db
-    //     .auth()
-    //     .createUserWithEmailAndPassword(email.value, password.value);
-    //     router.push('/')
-    // } catch (error) {
-    //   alert(error);
-    // }
-  }
+    registerWithEmailAndPassword(email.value, password.value)
+      .then((res) => {
+        router.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        router.reload();
+      });
+  };
   return (
     <div>
       <h1>Sign up</h1>
@@ -39,7 +29,9 @@ const SignUp = () => {
           <input name="password" type="password" placeholder="Password" />
         </label>
         <button type="submit">Sign Up</button>
-        <p>Already have an account? <Link href="/signin">SignIn </Link> </p>
+        <p>
+          Already have an account? <Link href="/signin">SignIn </Link>{" "}
+        </p>
       </form>
     </div>
   );
