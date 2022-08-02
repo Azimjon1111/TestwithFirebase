@@ -7,7 +7,7 @@ import Link from "next/link";
 import router from "next/router";
 import MainPage from "../components/mainPage";
 const Home: NextPage = () => {
-  const [isVerified, setIsVerified] = useState(null);
+  const [isVerified, setIsVerified] = useState<any>(null);
   useEffect(() => {
     IsVerified().then((res) => {
       if (res) {

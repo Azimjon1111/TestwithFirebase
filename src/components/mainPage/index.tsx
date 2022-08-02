@@ -17,9 +17,9 @@ const MainPage = () => {
     title: "",
     body: "",
   });
-  const [modalShow, setModalShow] = useState(false);
-  const [updateModalShow, setUpdateModalShow] = useState(false);
-  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState<boolean>(false);
+  const [updateModalShow, setUpdateModalShow] = useState<boolean>(false);
+  const [deleteModalShow, setDeleteModalShow] = useState<boolean>(false);
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
