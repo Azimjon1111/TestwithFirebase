@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail,signOut} from "firebase/auth";
+import { GoogleAuthProvider,getAuth, getIdToken,  signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail,signOut} from "firebase/auth";
 import {  getFirestore, query, getDocs, collection, where, addDoc} from "firebase/firestore";
 
 const firebaseConfig = {
@@ -20,6 +20,7 @@ const registerWithEmailAndPassword = async (email, password) => {
     console.log(email, password)
     const res = await createUserWithEmailAndPassword(auth, email, password);
     console.log(res)
+    localStorage.setItem("idToken", res._tokenResponse.idToken);
     const user = res.user;
     await addDoc(collection(db, "users"), {
       uid: user.uid,
@@ -35,10 +36,28 @@ const registerWithEmailAndPassword = async (email, password) => {
 };
 const logInWithEmailAndPassword = async (email, password) => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    console.log(res)
+    localStorage.setItem("idToken", res._tokenResponse.idToken);
   } catch (err) {
     console.error(err);
     alert(err.message);
   }
 };
-export {auth, db, registerWithEmailAndPassword,logInWithEmailAndPassword, app};
+const logout = () => {
+  signOut(auth);
+};
+const IsVerified = async() => {
+  const idToken = window.localStorage.getItem("idToken");
+  const auth1 = await getAuth(app);
+  let res = false
+  console.log(idToken)
+  console.log(auth1?.currentUser?.accessToken)
+  if(idToken == auth1?.currentUser?.accessToken){
+    res = true
+  }
+  console.log(res)
+  return res
+}
+
+export {auth, db, registerWithEmailAndPassword,logInWithEmailAndPassword,IsVerified, app};

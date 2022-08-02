@@ -12,6 +12,7 @@ const SignIn = () => {
     console.log(email.value, password.value);
     logInWithEmailAndPassword(email.value, password.value).then((res)=>{
         console.log(res)
+        router.push('/')
     }).catch((err)=>{
         console.log(err)
     })
