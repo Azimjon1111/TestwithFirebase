@@ -14,6 +14,7 @@ const SignUp = () => {
         router.push('/')
     }).catch((err)=>{
         console.log(err)
+        router.reload()
     })
     // try {
     //   await db

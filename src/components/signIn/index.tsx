@@ -10,10 +10,11 @@ const SignIn = () => {
     const { email, password } = event.target.elements;
     console.log(email.value, password.value);
     logInWithEmailAndPassword(email.value, password.value).then((res)=>{
-        console.log(res)
+      console.log(res)
         router.push('/')
     }).catch((err)=>{
         console.log(err)
+        router.reload()
     })
   }
   return (
