@@ -46,7 +46,7 @@ const MainPage = () => {
     <th>Actions</th>
   </tr>
   {data.map((item, index)=>(
-      <tr>
+      <tr key={item.id}>
     <td>{item.id}</td>
     <td>{item.userId}</td>
     <td>{item.title}</td>

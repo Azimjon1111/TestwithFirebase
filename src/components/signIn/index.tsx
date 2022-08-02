@@ -31,7 +31,7 @@ const SignIn = () => {
         </label>
         <button type="submit">Sign In</button>
       </form>
-      <p>Don't have account yet ? <Link href="/signup">SignUp </Link> </p>
+      <p>Don`t have account yet ? <Link href="/signup">SignUp </Link> </p>
     </div>
   );
 };
